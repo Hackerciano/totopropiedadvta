@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propiedad de Lujo en Puerto Vallarta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0B1F3B;
+      --navy-light: #16325B;
+      --white: #FFFFFF;
+      --gold: #C9A24A;
+      --gold-light: #e8c980;
+      --text-gray: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--gold);
+    }
+
+    p {
+      line-height: 1.7;
+      color: var(--text-gray);
+    }
+
+    section {
+      padding: 100px 10%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Animación Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* NAV - Liquid Glass */
+    nav {
+      position: fixed;
+      top: 15px;
+      left: 3%;
+      right: 3%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding-top: 80px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, rgba(11,31,59,0.3), rgba(11,31,59,0.8));
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      max-width: 850px;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: var(--white);
+    }
+
+    .booking-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 16px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .booking-card input,
+    .booking-card select {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* PROPERTY */
+    .property {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .property-info {
+      flex: 1;
+    }
+
+    .property-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .features-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--gold);
+      padding: 30px;
+      border-radius: 0 12px 12px 0;
+      margin-top: 20px;
+    }
+
+    .features-box ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .features-box li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400;
+    }
+
+    .features-box li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .property-image {
+      flex: 1;
+      position: relative;
+    }
+
+    .property-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* CALENDAR */
+    .calendar-container {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 16px;
+      margin-top: 40px;
+    }
+
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cal-header h3 {
+      font-size: 1.5rem;
+      color: var(--white);
+      text-transform: capitalize;
+    }
+
+    .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+
+    .day {
+      background: var(--navy-light);
+      padding: 15px 5px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+    }
+
+    .day:hover {
+      background: rgba(201, 162, 74, 0.2);
+    }
+
+    .day.today {
+      border: 2px solid var(--gold);
+      background: rgba(201, 162, 74, 0.1);
+      font-weight: 600;
+    }
+
+    .day.selected {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    .price-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+
+    .dot-green { background-color: #4CAF50; box-shadow: 0 0 5px #4CAF50;}
+    .dot-yellow { background-color: #FFC107; box-shadow: 0 0 5px #FFC107;}
+    .dot-red { background-color: #F44336; box-shadow: 0 0 5px #F44336;}
+
+    .legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+      font-size: 0.85rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px;}
+
+    /* REVIEWS */
+    .reviews-wrapper {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 20px 0 40px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--navy-light);
+    }
+
+    .review {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 16px;
+      min-width: 350px;
+      flex-shrink: 0;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .review-header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* FAQ */
+    .faq-container {
+      margin-top: 40px;
+      max-width: 800px;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text-gray);
+      padding: 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px; /* Suficiente espacio para el texto */
+      padding: 20px;
+    }
+
+    .faq-item.active .faq-question {
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #071426;
+      text-align: center;
+      padding: 60px 10%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .payment-containers {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .pay-box {
+      background: var(--white);
+      width: 70px;
+      height: 45px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+    }
+
+    .pay-box img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 900px) {
+      .property { flex-direction: column; }
+      .hero h1 { font-size: 2.8rem; }
+      nav { padding: 15px; }
+      .nav-links { display: none; /* Idealmente aquí iría un menú hamburguesa */ }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">PV Luxury Stay</div>
+  <div class="nav-links">
+    <a href="#propiedad">Propiedad</a>
+    <a href="#galeria">Galería</a>
+    <a href="#disponibilidad">Disponibilidad</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content reveal">
+    <h1>Tu escape perfecto en Puerto Vallarta</h1>
+    <p>150 m² de elegancia absoluta · Hasta 6 huéspedes · Vista ininterrumpida al mar</p>
+
+    <div class="booking-card">
+      <input type="date" aria-label="Check-in">
+      <input type="date" aria-label="Check-out">
+      <select aria-label="Huéspedes">
+        <option>1 Huésped</option>
+        <option>2 Huéspedes</option>
+        <option>3 Huéspedes</option>
+        <option>4 Huéspedes</option>
+        <option>5 Huéspedes</option>
+        <option>6 Huéspedes</option>
+      </select>
+      <button class="btn">Ver disponibilidad</button>
+    </div>
+     <div style="text-align:center; margin-top: 20px;">
+  <button class="btn" id="btn-reserva-demo">Reservar semana 12-19 Abril 2026 (Demo)</button>
+  <p id="mensaje-status" style="margin-top:10px; font-size: 0.9rem;"></p>
+</div>
+  </div>
+
+ 
+</section>
+
+<section id="propiedad" class="property reveal">
+  <div class="property-info">
+    <h2>La Propiedad</h2>
+    <p class="property-subtitle">Diseñada para quienes buscan confort y exclusividad en cada detalle de sus vacaciones.</p>
+    <p>Ubicada en una de las zonas más exclusivas, esta propiedad ofrece un refugio de paz con el sonido de las olas de fondo. Relájate en la terraza privada o prepara una cena gourmet en la cocina de concepto abierto.</p>
+    
+    <div class="features-box">
+      <ul>
+        <li>Vista panorámica al mar</li>
+        <li>Cocina de chef equipada</li>
+        <li>WiFi de alta velocidad (Starlink)</li>
+        <li>Capacidad para 6 personas</li>
+        <li>Aire acondicionado central</li>
+        <li>Alberca infinita compartida</li>
+        <li>Seguridad 24/7</li>
+        <li>Smart TV de 65"</li>
+      </ul>
+    </div>
+  </div>
+  <div class="property-image">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Interior de la propiedad">
+  </div>
+</section>
+
+<section id="galeria" class="reveal">
+  <h2>Galería</h2>
+  <p style="margin-bottom: 30px;">Explora los rincones de tu próximo destino.</p>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80" alt="Sala de estar">
+    <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=600&q=80" alt="Recámara principal">
+    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=600&q=80" alt="Baño de lujo">
+    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" alt="Terraza">
+    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Cocina">
+    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80" alt="Detalles">
+  </div>
+</section>
+
+<section id="disponibilidad" class="reveal">
+  <h2>Disponibilidad y Tarifas</h2>
+  <p>Selecciona tus fechas para ver precios exactos. Las tarifas varían según la temporada.</p>
+  
+  <div class="calendar-container">
+    <div class="cal-header">
+      <h3 id="mes-año">Mes Año</h3>
+      <div>
+        <button class="btn" style="padding: 8px 15px; background: var(--navy-light); color: white;">&lt;</button>
+        <button class="btn" style="padding: 8px 15px; background: var(--navy-light); color: white;">&gt;</button>
+      </div>
+    </div>
+    
+    <div class="weekdays">
+      <div>Dom</div><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div>
+    </div>
+    <div class="days" id="calendar"></div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="price-dot dot-green"></div> Tarifa Baja</div>
+      <div class="legend-item"><div class="price-dot dot-yellow"></div> Tarifa Estándar</div>
+      <div class="legend-item"><div class="price-dot dot-red"></div> Tarifa Alta</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2>Experiencias de Huéspedes</h2>
+  <div class="reviews-wrapper">
+    <div class="review">
+      <div class="review-header">
+        <img src="https://i.pravatar.cc/150?img=47" alt="Avatar">
+        <div>
+          <h4>Mariana Gómez</h4>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p>"Las fotos no le hacen justicia. El atardecer desde la terraza principal es simplemente mágico. El lugar estaba impecable y la atención del host fue rápida y súper amable. Sin duda volveremos el próximo año."</p>
+    </div>
+
+    <div class="review">
+      <div class="review-header">
+        <img src="https://i.pravatar.cc/150?img=11" alt="Avatar">
+        <div>
+          <h4>David R.</h4>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p>"Excelente ubicación, muy cerca de los mejores restaurantes pero lo suficientemente alejado para tener paz por la noche. La cocina tiene absolutamente todo lo que necesitas."</p>
+    </div>
+
+    <div class="review">
+      <div class="review-header">
+        <img src="https://i.pravatar.cc/150?img=32" alt="Avatar">
+        <div>
+          <h4>Elena Suárez</h4>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p>"Fui con mi familia (somos 5) y el espacio fue perfecto. Las camas son comodísimas, el internet súper rápido para los que tuvimos que trabajar un par de días, y la alberca es preciosa."</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq-container">
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">¿A qué hora es el Check-in y Check-out? <span>+</span></div>
+      <div class="faq-answer">El check-in está disponible a partir de las 3:00 PM y el check-out es a las 11:00 AM. Contamos con sistema de cerradura inteligente, por lo que puedes llegar a cualquier hora después de las 3 PM.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">¿Se permiten mascotas en la propiedad? <span>+</span></div>
+      <div class="faq-answer">Amamos a los animales, sin embargo, para garantizar un ambiente libre de alergias para todos nuestros huéspedes, actualmente no permitimos mascotas en esta propiedad.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">¿Hay espacio de estacionamiento? <span>+</span></div>
+      <div class="faq-answer">Sí, la propiedad incluye un cajón de estacionamiento techado y seguro sin costo adicional durante toda tu estancia.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">¿Incluye servicio de limpieza diario? <span>+</span></div>
+      <div class="faq-answer">La tarifa base incluye limpieza antes de tu llegada y después de tu salida. Si deseas limpieza diaria durante tu estancia, podemos arreglarlo por un costo extra.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="reveal" style="text-align: center; padding-bottom: 120px;">
+  <h2>¿Listo para reservar?</h2>
+  <p style="margin-bottom: 30px;">Contáctanos por WhatsApp o correo electrónico para tarifas especiales y disponibilidad.</p>
+  <button class="btn" style="font-size: 1.1rem; padding: 15px 40px;">Contactar ahora</button>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="logo">PV Luxury Stay</div>
+    <p>© 2026 Todos los derechos reservados.</p>
+    <div class="payment-containers">
+      <div class="pay-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+      </div>
+      <div class="pay-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+      </div>
+      <div class="pay-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png" alt="American Express">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // --- 1. Generador de Calendario Dinámico ---
+  const calendar = document.getElementById("calendar");
+  const monthYearLabel = document.getElementById("mes-año");
+  
+  // Obtener fecha actual
+  const hoy = new Date();
+  const currentMonth = hoy.getMonth();
+  const currentYear = hoy.getFullYear();
+  const currentDate = hoy.getDate();
+
+  const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  
+  // Establecer título del calendario
+  monthYearLabel.innerText = `${meses[currentMonth]} ${currentYear}`;
+
+  // Calcular días del mes actual
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  // Día de la semana en que empieza el mes (0 = Dom, 1 = Lun...)
+  const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+
+  // Rellenar espacios vacíos al inicio del mes
+  for (let x = 0; x < firstDayIndex; x++) {
+    const emptyDiv = document.createElement("div");
+    calendar.appendChild(emptyDiv);
+  }
+
+  // Generar los días
+  for (let i = 1; i <= daysInMonth; i++) {
+    const day = document.createElement("div");
+    day.classList.add("day");
+    
+    // Contenedor del número
+    const numSpan = document.createElement("span");
+    numSpan.innerText = i;
+    day.appendChild(numSpan);
+
+    // Identificar el día actual para el marco ligero
+    if (i === currentDate) {
+      day.classList.add("today");
+    }
+
+    // Generar puntito de color aleatorio para el rango de precios
+    const dotClasses = ['dot-green', 'dot-yellow', 'dot-red'];
+    const randomDot = dotClasses[Math.floor(Math.random() * dotClasses.length)];
+    
+    const dotDiv = document.createElement("div");
+    dotDiv.classList.add("price-dot", randomDot);
+    day.appendChild(dotDiv);
+
+    // Seleccionar día
+    day.onclick = () => {
+      // Remover selección de otros (opcional, aquí permitimos múltiple para simular rango)
+      day.classList.toggle("selected");
+    };
+
+    calendar.appendChild(day);
+  }
+
+  // --- 2. Acordeón para FAQs ---
+  function toggleFAQ(el) {
+    el.classList.toggle('active');
+    const symbol = el.querySelector('span');
+    if(el.classList.contains('active')){
+      symbol.innerText = '-';
+    } else {
+      symbol.innerText = '+';
+    }
+  }
+
+  // --- 3. Efectos visuales de revelado (Scroll Animation) ---
+  const reveals = document.querySelectorAll('.reveal');
+
+  const revealOnScroll = () => {
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const elementVisible = 100;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add('active');
+      }
+    }
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  // Llamar una vez para revelar lo que ya está en pantalla
+  revealOnScroll();
+
+</script>
+
+<script>
+document.getElementById('btn-reserva-demo').addEventListener('click', async function() {
+    const statusMsg = document.getElementById('mensaje-status');
+    statusMsg.innerText = "Procesando reserva...";
+    
+    // URL DE TU GOOGLE APPS SCRIPT (Pégala aquí)
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbxeIHXWIDrz5U0jSUWqxxVDq3Nl1mg2ccxvDC0iElQFgEUXVS1PaHDwqR_rXGK9SXj5/exec";
+
+    const datosReserva = {
+        nombre: "Cliente Demo Web",
+        checkin: "2026-04-12",
+        checkout: "2026-04-19",
+        monto: "$1,400 USD" // Este dato lo puedes tomar del front-end
+    };
+
+    try {
+        // Usamos mode: 'no-cors' para prototipos simples con GAS
+        await fetch(GAS_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Importante para evitar bloqueos de navegador en demo
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosReserva)
+        });
+
+        statusMsg.style.color = "#C9A24A";
+        statusMsg.innerText = "¡Reserva enviada con éxito al Google Sheet! Revisa tu Excel.";
+        
+    } catch (error) {
+        console.error('Error:', error);
+        statusMsg.innerText = "Error al conectar con la base de datos.";
+    }
+});
+</script>
+
+<script>
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbxeIHXWIDrz5U0jSUWqxxVDq3Nl1mg2ccxvDC0iElQFgEUXVS1PaHDwqR_rXGK9SXj5/exec"; // La misma que usaste para el POST
+
+  async function inicializarCalendario() {
+    let fechasOcupadas = [];
+
+    // 1. Intentar leer reservas del Excel
+    try {
+      const response = await fetch(GAS_URL);
+      const data = await response.json();
+      
+      // Convertimos las fechas del Excel a strings comparables (YYYY-MM-DD)
+      fechasOcupadas = data.map(res => {
+        const d = new Date(res.checkin);
+        return d.toISOString().split('T')[0];
+      });
+    } catch (e) {
+      console.log("No se pudieron cargar reservas, mostrando calendario limpio.");
+    }
+
+    // 2. Generar el Calendario
+    const calendar = document.getElementById("calendar");
+    const hoy = new Date();
+    const currentMonth = hoy.getMonth();
+    const currentYear = hoy.getFullYear();
+
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+
+    calendar.innerHTML = ""; // Limpiar
+
+    for (let x = 0; x < firstDayIndex; x++) {
+      calendar.appendChild(document.createElement("div"));
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      const day = document.createElement("div");
+      day.classList.add("day");
+      
+      // Formatear fecha actual del bucle para comparar
+      const fechaBucle = new Date(currentYear, currentMonth, i).toISOString().split('T')[0];
+
+      day.innerHTML = `<span>${i}</span>`;
+
+      // 3. SI LA FECHA ESTÁ EN EL EXCEL, BLOQUEARLA
+      if (fechasOcupadas.includes(fechaBucle)) {
+        day.style.background = "#2a2a2a"; // Color de bloqueado
+        day.style.color = "#555";
+        day.style.cursor = "not-allowed";
+        day.style.opacity = "0.5";
+        day.title = "Fecha no disponible";
+      } else {
+        // Si está libre, agregamos los puntitos de precio aleatorios y el click
+        const dot = document.createElement("div");
+        dot.classList.add("price-dot", ["dot-green", "dot-yellow", "dot-red"][Math.floor(Math.random()*3)]);
+        day.appendChild(dot);
+        
+        day.onclick = () => day.classList.toggle("selected");
+      }
+
+      if (i === hoy.getDate()) day.classList.add("today");
+
+      calendar.appendChild(day);
+    }
+  }
+
+  // Ejecutar al cargar la página
+  inicializarCalendario();
+</script>
+
+</body>
+</html>
