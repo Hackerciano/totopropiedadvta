@@ -11,12 +11,14 @@
 
   <style>
     :root {
-      --navy: #0B1F3B;
-      --navy-light: #16325B;
+      --bg-light: #FDFBF7;
+      --text-main: #2D3748;
+      --text-gray: #5A6A7D;
+      --accent-blue: #1E3A5F;
+      --accent-gold: #D4A017;
+      --accent-gold-light: #E8C15A;
       --white: #FFFFFF;
-      --gold: #C9A24A;
-      --gold-light: #e8c980;
-      --text-gray: #e0e0e0;
+      --wood-warm: #8B5A2B;
     }
 
     * {
@@ -26,8 +28,8 @@
     }
 
     body {
-      background: var(--navy);
-      color: var(--white);
+      background: var(--bg-light);
+      color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
       overflow-x: hidden;
@@ -41,7 +43,7 @@
     h2 {
       font-size: 2.5rem;
       margin-bottom: 15px;
-      color: var(--gold);
+      color: var(--accent-blue);
     }
 
     p {
@@ -55,7 +57,6 @@
       margin: 0 auto;
     }
 
-    /* Animación Reveal */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -66,7 +67,6 @@
       transform: translateY(0);
     }
 
-    /* NAV - Liquid Glass */
     nav {
       position: fixed;
       top: 15px;
@@ -76,13 +76,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 20px;
       z-index: 1000;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
     }
 
@@ -90,27 +90,27 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--accent-blue);
       letter-spacing: 1px;
     }
 
     .nav-links a {
-      color: var(--white);
+      color: var(--text-main);
       margin-left: 25px;
       text-decoration: none;
-      font-weight: 400;
+      font-weight: 500;
       font-size: 0.9rem;
       transition: color 0.3s ease;
     }
 
     .nav-links a:hover {
-      color: var(--gold);
+      color: var(--accent-gold);
     }
 
-    /* HERO */
+    /* HERO: Actualizado con la ruta local src/03.jpeg */
     .hero {
       height: 100vh;
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
+      background: url('src/03.jpeg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,7 +121,7 @@
     .overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to bottom, rgba(11,31,59,0.3), rgba(11,31,59,0.8));
+      background: linear-gradient(to bottom, rgba(30,58,95,0.2), rgba(30,58,95,0.7));
     }
 
     .hero-content {
@@ -134,17 +134,19 @@
     .hero h1 {
       font-size: 4rem;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      color: var(--white);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
     }
 
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 40px;
       color: var(--white);
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
 
     .booking-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       padding: 25px;
       border-radius: 16px;
       display: inline-flex;
@@ -152,37 +154,39 @@
       gap: 15px;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     .booking-card input,
     .booking-card select {
       padding: 12px 15px;
-      border: 1px solid #ddd;
+      border: 1px solid #E2E8F0;
       border-radius: 8px;
       font-family: 'Montserrat', sans-serif;
+      color: var(--text-main);
       outline: none;
       font-size: 0.95rem;
+      background: #F8FAFC;
     }
 
     .btn {
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent-gold);
+      color: var(--white);
       border: none;
       padding: 14px 28px;
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
       font-family: 'Montserrat', sans-serif;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
 
     .btn:hover {
-      background: var(--gold-light);
+      background: var(--accent-blue);
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(30, 58, 95, 0.3);
     }
 
-    /* PROPERTY */
     .property {
       display: flex;
       gap: 60px;
@@ -196,15 +200,17 @@
     .property-subtitle {
       font-size: 1.1rem;
       margin-bottom: 30px;
-      font-weight: 300;
+      font-weight: 400;
+      color: var(--text-main);
     }
 
     .features-box {
-      background: rgba(255, 255, 255, 0.05);
-      border-left: 4px solid var(--gold);
+      background: var(--white);
+      border-left: 4px solid var(--accent-gold);
       padding: 30px;
       border-radius: 0 12px 12px 0;
       margin-top: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
     }
 
     .features-box ul {
@@ -218,12 +224,13 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 400;
+      font-weight: 500;
+      color: var(--text-main);
     }
 
     .features-box li::before {
       content: '✓';
-      color: var(--gold);
+      color: var(--accent-gold);
       font-weight: bold;
     }
 
@@ -235,10 +242,9 @@
     .property-image img {
       width: 100%;
       border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
 
-    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -251,21 +257,22 @@
       height: 300px;
       object-fit: cover;
       border-radius: 12px;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
     }
 
     .gallery img:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
-    /* CALENDAR */
     .calendar-container {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
       padding: 40px;
       border-radius: 16px;
       margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
     .cal-header {
@@ -277,7 +284,7 @@
 
     .cal-header h3 {
       font-size: 1.5rem;
-      color: var(--white);
+      color: var(--accent-blue);
       text-transform: capitalize;
     }
 
@@ -286,7 +293,7 @@
       grid-template-columns: repeat(7, 1fr);
       text-align: center;
       font-weight: 600;
-      color: var(--gold);
+      color: var(--text-gray);
       margin-bottom: 15px;
       font-size: 0.9rem;
     }
@@ -298,7 +305,8 @@
     }
 
     .day {
-      background: var(--navy-light);
+      background: #F8FAFC;
+      color: var(--text-main);
       padding: 15px 5px;
       text-align: center;
       border-radius: 8px;
@@ -308,23 +316,26 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 1px solid transparent;
+      border: 1px solid #E2E8F0;
     }
 
     .day:hover {
-      background: rgba(201, 162, 74, 0.2);
+      background: #EAF0F6;
+      border-color: var(--accent-blue);
     }
 
     .day.today {
-      border: 2px solid var(--gold);
-      background: rgba(201, 162, 74, 0.1);
+      border: 2px solid var(--accent-gold);
+      background: rgba(212, 160, 23, 0.1);
       font-weight: 600;
+      color: var(--accent-blue);
     }
 
     .day.selected {
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent-blue);
+      color: var(--white);
       font-weight: bold;
+      border-color: var(--accent-blue);
     }
 
     .price-dot {
@@ -344,26 +355,27 @@
       justify-content: center;
       margin-top: 30px;
       font-size: 0.85rem;
+      color: var(--text-main);
     }
     .legend-item { display: flex; align-items: center; gap: 8px;}
 
-    /* REVIEWS */
     .reviews-wrapper {
       display: flex;
       gap: 30px;
       overflow-x: auto;
       padding: 20px 0 40px 0;
       scrollbar-width: thin;
-      scrollbar-color: var(--gold) var(--navy-light);
+      scrollbar-color: var(--accent-gold) #F1F1F1;
     }
 
     .review {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.04);
       padding: 30px;
       border-radius: 16px;
       min-width: 350px;
       flex-shrink: 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
     }
 
     .review-header {
@@ -378,27 +390,31 @@
       height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--gold);
+      border: 2px solid var(--accent-gold);
+    }
+
+    .review-header h4 {
+      color: var(--accent-blue);
     }
 
     .review-stars {
-      color: var(--gold);
+      color: var(--accent-gold);
       font-size: 1.2rem;
       margin-bottom: 10px;
     }
 
-    /* FAQ */
     .faq-container {
       margin-top: 40px;
       max-width: 800px;
     }
 
     .faq-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.05);
       border-radius: 8px;
       margin-bottom: 15px;
       overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
     .faq-question {
@@ -407,39 +423,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--text-main);
       transition: background 0.3s;
     }
 
     .faq-question:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: #F8FAFC;
+      color: var(--accent-blue);
     }
 
     .faq-answer {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.4s ease;
-      background: rgba(0, 0, 0, 0.2);
+      background: #FDFBF7;
       color: var(--text-gray);
       padding: 0 20px;
       font-size: 0.95rem;
     }
 
     .faq-item.active .faq-answer {
-      max-height: 200px; /* Suficiente espacio para el texto */
+      max-height: 200px; 
       padding: 20px;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
     .faq-item.active .faq-question {
-      color: var(--gold);
+      color: var(--accent-gold);
     }
 
-    /* FOOTER */
     footer {
-      background: #071426;
+      background: var(--accent-blue);
+      color: var(--white);
       text-align: center;
       padding: 60px 10%;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 4px solid var(--accent-gold);
     }
 
     .footer-content {
@@ -447,6 +466,10 @@
       flex-direction: column;
       align-items: center;
       gap: 30px;
+    }
+    
+    .footer-content .logo {
+      color: var(--white);
     }
 
     .payment-containers {
@@ -471,12 +494,11 @@
       max-height: 100%;
     }
 
-    /* RESPONSIVE */
     @media(max-width: 900px) {
       .property { flex-direction: column; }
       .hero h1 { font-size: 2.8rem; }
       nav { padding: 15px; }
-      .nav-links { display: none; /* Idealmente aquí iría un menú hamburguesa */ }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -514,11 +536,9 @@
     </div>
      <div style="text-align:center; margin-top: 20px;">
   <button class="btn" id="btn-reserva-demo">Reservar semana 12-19 Abril 2026 (Demo)</button>
-  <p id="mensaje-status" style="margin-top:10px; font-size: 0.9rem;"></p>
+  <p id="mensaje-status" style="margin-top:10px; font-size: 0.9rem; color: #fff;"></p>
 </div>
   </div>
-
- 
 </section>
 
 <section id="propiedad" class="property reveal">
@@ -541,7 +561,8 @@
     </div>
   </div>
   <div class="property-image">
-    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Interior de la propiedad">
+    <!-- Imagen de la propiedad actualizada -->
+    <img src="src/01.jpeg" alt="Interior de la propiedad">
   </div>
 </section>
 
@@ -549,12 +570,13 @@
   <h2>Galería</h2>
   <p style="margin-bottom: 30px;">Explora los rincones de tu próximo destino.</p>
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80" alt="Sala de estar">
-    <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=600&q=80" alt="Recámara principal">
-    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=600&q=80" alt="Baño de lujo">
-    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" alt="Terraza">
-    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Cocina">
-    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80" alt="Detalles">
+    <!-- Imágenes de la galería actualizadas -->
+    <img src="src/12.avif" alt="Sala de estar principal">
+    <img src="src/06.jpeg" alt="Recámara principal">
+    <img src="src/09.jpeg" alt="Recámara de dos camas">
+    <img src="src/02.jpeg" alt="Comedor principal">
+    <img src="src/10.jpeg" alt="Cocina y barra">
+    <img src="src/08.jpeg" alt="Detalles de recámara">
   </div>
 </section>
 
@@ -566,8 +588,8 @@
     <div class="cal-header">
       <h3 id="mes-año">Mes Año</h3>
       <div>
-        <button class="btn" style="padding: 8px 15px; background: var(--navy-light); color: white;">&lt;</button>
-        <button class="btn" style="padding: 8px 15px; background: var(--navy-light); color: white;">&gt;</button>
+        <button class="btn" style="padding: 8px 15px; background: var(--accent-blue); color: white;">&lt;</button>
+        <button class="btn" style="padding: 8px 15px; background: var(--accent-blue); color: white;">&gt;</button>
       </div>
     </div>
     
@@ -673,7 +695,6 @@
   const calendar = document.getElementById("calendar");
   const monthYearLabel = document.getElementById("mes-año");
   
-  // Obtener fecha actual
   const hoy = new Date();
   const currentMonth = hoy.getMonth();
   const currentYear = hoy.getFullYear();
@@ -681,36 +702,28 @@
 
   const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   
-  // Establecer título del calendario
   monthYearLabel.innerText = `${meses[currentMonth]} ${currentYear}`;
 
-  // Calcular días del mes actual
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  // Día de la semana en que empieza el mes (0 = Dom, 1 = Lun...)
   const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
 
-  // Rellenar espacios vacíos al inicio del mes
   for (let x = 0; x < firstDayIndex; x++) {
     const emptyDiv = document.createElement("div");
     calendar.appendChild(emptyDiv);
   }
 
-  // Generar los días
   for (let i = 1; i <= daysInMonth; i++) {
     const day = document.createElement("div");
     day.classList.add("day");
     
-    // Contenedor del número
     const numSpan = document.createElement("span");
     numSpan.innerText = i;
     day.appendChild(numSpan);
 
-    // Identificar el día actual para el marco ligero
     if (i === currentDate) {
       day.classList.add("today");
     }
 
-    // Generar puntito de color aleatorio para el rango de precios
     const dotClasses = ['dot-green', 'dot-yellow', 'dot-red'];
     const randomDot = dotClasses[Math.floor(Math.random() * dotClasses.length)];
     
@@ -718,9 +731,7 @@
     dotDiv.classList.add("price-dot", randomDot);
     day.appendChild(dotDiv);
 
-    // Seleccionar día
     day.onclick = () => {
-      // Remover selección de otros (opcional, aquí permitimos múltiple para simular rango)
       day.classList.toggle("selected");
     };
 
@@ -738,7 +749,7 @@
     }
   }
 
-  // --- 3. Efectos visuales de revelado (Scroll Animation) ---
+  // --- 3. Efectos visuales de revelado ---
   const reveals = document.querySelectorAll('.reveal');
 
   const revealOnScroll = () => {
@@ -754,7 +765,6 @@
   };
 
   window.addEventListener('scroll', revealOnScroll);
-  // Llamar una vez para revelar lo que ya está en pantalla
   revealOnScroll();
 
 </script>
@@ -764,28 +774,26 @@ document.getElementById('btn-reserva-demo').addEventListener('click', async func
     const statusMsg = document.getElementById('mensaje-status');
     statusMsg.innerText = "Procesando reserva...";
     
-    // URL DE TU GOOGLE APPS SCRIPT (Pégala aquí)
     const GAS_URL = "https://script.google.com/macros/s/AKfycbxeIHXWIDrz5U0jSUWqxxVDq3Nl1mg2ccxvDC0iElQFgEUXVS1PaHDwqR_rXGK9SXj5/exec";
 
     const datosReserva = {
         nombre: "Cliente Demo Web",
         checkin: "2026-04-12",
         checkout: "2026-04-19",
-        monto: "$1,400 USD" // Este dato lo puedes tomar del front-end
+        monto: "$1,400 USD" 
     };
 
     try {
-        // Usamos mode: 'no-cors' para prototipos simples con GAS
         await fetch(GAS_URL, {
             method: 'POST',
-            mode: 'no-cors', // Importante para evitar bloqueos de navegador en demo
+            mode: 'no-cors', 
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(datosReserva)
         });
 
-        statusMsg.style.color = "#C9A24A";
+        statusMsg.style.color = "var(--accent-gold)";
         statusMsg.innerText = "¡Reserva enviada con éxito al Google Sheet! Revisa tu Excel.";
         
     } catch (error) {
@@ -796,17 +804,15 @@ document.getElementById('btn-reserva-demo').addEventListener('click', async func
 </script>
 
 <script>
-  const GAS_URL = "https://script.google.com/macros/s/AKfycbxeIHXWIDrz5U0jSUWqxxVDq3Nl1mg2ccxvDC0iElQFgEUXVS1PaHDwqR_rXGK9SXj5/exec"; // La misma que usaste para el POST
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbxeIHXWIDrz5U0jSUWqxxVDq3Nl1mg2ccxvDC0iElQFgEUXVS1PaHDwqR_rXGK9SXj5/exec"; 
 
   async function inicializarCalendario() {
     let fechasOcupadas = [];
 
-    // 1. Intentar leer reservas del Excel
     try {
       const response = await fetch(GAS_URL);
       const data = await response.json();
       
-      // Convertimos las fechas del Excel a strings comparables (YYYY-MM-DD)
       fechasOcupadas = data.map(res => {
         const d = new Date(res.checkin);
         return d.toISOString().split('T')[0];
@@ -815,7 +821,6 @@ document.getElementById('btn-reserva-demo').addEventListener('click', async func
       console.log("No se pudieron cargar reservas, mostrando calendario limpio.");
     }
 
-    // 2. Generar el Calendario
     const calendar = document.getElementById("calendar");
     const hoy = new Date();
     const currentMonth = hoy.getMonth();
@@ -824,7 +829,7 @@ document.getElementById('btn-reserva-demo').addEventListener('click', async func
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
     const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
 
-    calendar.innerHTML = ""; // Limpiar
+    calendar.innerHTML = ""; 
 
     for (let x = 0; x < firstDayIndex; x++) {
       calendar.appendChild(document.createElement("div"));
@@ -834,20 +839,17 @@ document.getElementById('btn-reserva-demo').addEventListener('click', async func
       const day = document.createElement("div");
       day.classList.add("day");
       
-      // Formatear fecha actual del bucle para comparar
       const fechaBucle = new Date(currentYear, currentMonth, i).toISOString().split('T')[0];
 
       day.innerHTML = `<span>${i}</span>`;
 
-      // 3. SI LA FECHA ESTÁ EN EL EXCEL, BLOQUEARLA
       if (fechasOcupadas.includes(fechaBucle)) {
-        day.style.background = "#2a2a2a"; // Color de bloqueado
-        day.style.color = "#555";
+        day.style.background = "#E2E8F0"; 
+        day.style.color = "#94A3B8";
         day.style.cursor = "not-allowed";
-        day.style.opacity = "0.5";
+        day.style.opacity = "0.7";
         day.title = "Fecha no disponible";
       } else {
-        // Si está libre, agregamos los puntitos de precio aleatorios y el click
         const dot = document.createElement("div");
         dot.classList.add("price-dot", ["dot-green", "dot-yellow", "dot-red"][Math.floor(Math.random()*3)]);
         day.appendChild(dot);
@@ -861,7 +863,6 @@ document.getElementById('btn-reserva-demo').addEventListener('click', async func
     }
   }
 
-  // Ejecutar al cargar la página
   inicializarCalendario();
 </script>
 
